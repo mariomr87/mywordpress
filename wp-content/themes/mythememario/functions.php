@@ -40,3 +40,31 @@ function sidebar(){
 }
 
 add_action( 'widgets_init', 'sidebar');
+
+function noticias_type(){
+
+    $labels = array(
+        'name' => 'Noticias',
+        'singular_name' => 'Noticia',
+        'menu_name' => 'Noticiasss'
+    );
+
+    $args = array(
+        'label' => 'Noticias',
+        'descripcion' => 'Noticias platzi-news',
+        'labels' => $labels,
+        'supports' => array('title','editor','thumbnail','revisions'),
+        'public'  => true,
+        'show_in_menu' =>  true,
+        'menu_position' => 5,
+        'menu_icon' => 'dashicons-admin-multisite',
+        'can_export' => true,
+        'publicly_queryable' => true,
+        'rewrite' => true,
+        'show_in_rest' => true,
+
+    );
+    register_post_type( 'noticia', $args );
+}
+
+add_action( 'init', 'noticias_type');
